@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AddUsersValidator } from '../common/add-users-validation';
 
 @Component({
@@ -16,37 +16,42 @@ export class AddUsersTest2Component implements OnInit {
   }
 
   initForm() {
-    this.usersForm = new FormGroup({
-      firstname: new FormControl('',
-        [
-          Validators.required, 
-          Validators.minLength(2)
-        ]
-      ),
-      lastname: new FormControl('',
-        [
-          Validators.required, 
-          Validators.minLength(2)
-        ]
-      ),
-      username: new FormControl('',
-        [
-          Validators.required, 
-          Validators.minLength(6)
-        ]
-      ),
-      password: new FormControl('',
-        [
-          Validators.required, 
-          Validators.minLength(8),
-          Validators.maxLength(16)
-        ]
-      ),
-      confirmPassword: new FormControl('',
-        Validators.required
-      ),
-      noPassword: new FormControl(false)
-    });
+    this.usersForm = new FormGroup(
+      {
+        firstname: new FormControl('',
+          [
+            Validators.required, 
+            Validators.minLength(2)
+          ]
+        ),
+        lastname: new FormControl('',
+          [
+            Validators.required, 
+            Validators.minLength(2)
+          ]
+        ),
+        username: new FormControl('',
+          [
+            Validators.required, 
+            Validators.minLength(6)
+          ]
+        ),
+        password: new FormControl('',
+          [
+            Validators.required, 
+            Validators.minLength(8),
+            Validators.maxLength(16)
+          ]
+        ),
+        confirmPassword: new FormControl('',
+          Validators.required
+        ),
+        noPassword: new FormControl(false)
+      },
+      {
+        validators: AddUsersValidator.checkPasswordMatch 
+      }
+    );
 
     this.noPassword.valueChanges
       .subscribe(checked => {
@@ -61,16 +66,6 @@ export class AddUsersTest2Component implements OnInit {
       });
   }
 
-  // setPasswordValidator(disable: boolean) {
-  //   disable ? 
-  //     this.password.disable() :
-  //     this.password.enable();
-  // }
-  // setConfirmPasswordValidator(disable: boolean) {
-  //   disable ? 
-  //     this.confirmPassword.disable() :
-  //     this.confirmPassword.enable();
-  // }
 
   onSubmit() {
     this.noPassword.disable();

@@ -101,15 +101,16 @@
             type="password" 
         />
         <div
-            *ngIf="confirmPassword.touched && confirmPassword.invalid"
+            *ngIf="confirmPassword.touched && confirmPassword.invalid && confirmPassword.errors.required" 
+            class="alert alert-danger" 
+        >
+            'Confirm Password' is required
+        </div>
+        <div 
+            *ngIf="password.valid && confirmPassword.valid && usersForm.invalid && usersForm.errors.PasswordDoesNotMatch" 
             class="alert alert-danger"
         >
-            <div *ngIf="confirmPassword.errors.required">
-                confirmPassword is required
-            </div>
-            <div *ngIf="confirmPassword.errors.match">
-                Confirm Password does not match with the given Password
-            </div>
+            'Confirm Password' does not match with the given Password
         </div>
     </div>
 
