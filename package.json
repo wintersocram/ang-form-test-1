@@ -7,7 +7,12 @@
     "type": "git",
     "url": "https://github.com/wintersocram/form-model-angular.git"
   },
-  "keywords": ["angular","rxjs","form model","form"],
+  "keywords": [
+    "angular",
+    "rxjs",
+    "form model",
+    "form"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

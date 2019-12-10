@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DataService } from './data.service';
+import * as localData from '../local-data/data.json';
+import * as localUsers from '../local-data/users.json';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -32,44 +34,18 @@ export class UsersService {
   // }
 
   registerUsers(obj){
-    let baseUrl: string = "http://localhost:4000/book";
-    return this.http.post(baseUrl,obj, {
-      headers: new HttpHeaders({
-           'Content-Type':  'application/json',
-         })
-    });
+    // let baseUrl: string = "http://localhost:4000/book";
+    // return this.http.post(baseUrl,obj, {
+    //   headers: new HttpHeaders({
+    //        'Content-Type':  'application/json',
+    //      })
+    // });
 }
 
   createUser(user: any) {
-    this.registerUsers({data: 'asdasd'}).subscribe((reponse)=>{
-      console.log(reponse);
-     }); 
-
-    // this.http.post(
-    //   'http://localhost:4000/book', 
-    //   {
-    //     obj: 'obj'
-    //   },
-    //   {
-    //     headers: new HttpHeaders({
-    //       'Content-Type':  'application/json',
-    //     })
-    //   }
-    // )
-    //   .subscribe();
-
-    // console.debug(`[${ this.BASE_COMPONENT }.createUser()] user: %o`, user);
-    // let pathUrl: string = '/create-new';
-    // let url: string = `${ this._baseUrl }${ pathUrl }`;
-    // // this.http.post(url, user)
-    // // // this.service.create(pathUrl, user)
-    // //   .subscribe(res => {
-    // //     console.debug(`[${ this.BASE_COMPONENT }.createUser()] res: %o`, res);
-    // //   });
-    // this.http.post('http://localhost:4000/book', {}, httpOptions)
-    //   .subscribe(res => {
-    //     console.log('POST res: %o', res);
-    //   });
+    // this.registerUsers({data: 'asdasd'}).subscribe((reponse)=>{
+    //   console.log(reponse);
+    //  }); 
   }
 
   getUser() {
@@ -81,11 +57,25 @@ export class UsersService {
       });
   }
 
-  // getAllUsers() {
-  //   let url: string = 'http://jsonplaceholder.typicode.com/posts';
-  //   this.service.getAll(url)
-  //     .subscribe(res => {
-  //       console.debug(`[${ this.BASE_COMPONENT }.getAllUsers()] res: %o`, res);
-  //     })
-  // }
+  getLocalSampleData() {
+    return localData;
+  }
+
+  getLocalUsers() {
+    return localUsers;
+  }
+
+  getLocalUserById(id: number) {
+    let users: any[] = (localUsers as any).default;
+
+    for (let i=0 ; i< users.length; i++) {
+      let element = users[i];
+      if (element.id == id) {
+
+        return element;
+      }
+    }
+
+    return null;
+  }
 }
