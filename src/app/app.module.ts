@@ -4,6 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AddUsersTest2Component } from './add-users-test2/add-users-test2.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './services/data.service';
+import { UsersService } from './services/users.service';
 
 @NgModule({
   declarations: [
@@ -13,9 +16,13 @@ import { AddUsersTest2Component } from './add-users-test2/add-users-test2.compon
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    DataService,
+    UsersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
