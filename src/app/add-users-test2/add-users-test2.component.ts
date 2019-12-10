@@ -14,6 +14,7 @@ export class AddUsersTest2Component implements OnInit {
   usersForm: FormGroup;
   localUsers: any;
   localSampleData: any;
+  idRef: number = 0;
   // private _noPassword: boolean = false;
 
   constructor(private usersService: UsersService) {}
@@ -75,34 +76,43 @@ export class AddUsersTest2Component implements OnInit {
   }
 
   onSubmit() {
-    this.noPassword.disable();
-    console.debug('[OnSubmit] this.usersForm: %o', this.usersForm);
-    console.debug('[OnSubmit] value: %o', this.usersForm.value);
-    // this.usersService.createUser(this.usersForm.value);
-  }
-
-  getLocalSampleData() {
-    let _localSampleData = this.usersService.getLocalSampleData();
-    this.localSampleData = (_localSampleData as any).default;
-
-    console.log("getting local sample data (using UsersService)\nlocal Data: %o", _localSampleData);
-    console.log("localDataFromUsersService: %o\nrequest finished!", this.localSampleData);
+    if (this.addCurrentUserToLocal())
+      this.resetForm();
   }
 
   getLocalUsers() {
-    this.localUsers = (localUsers as any).default;
-
-    console.log("getting local users...\nlocal users: %o", localUsers);
-    console.log("local user: %o\nrequest finished!", this.localUsers);
+    console.log('getting users...');
+    console.log('\tusers: %o', this.usersService.users);
   }
 
-  getLocalUserById(id: number) {
-    let localUser = this.usersService.getLocalUserById(id);
+  getLocalUserById() {
+    let id = this.idRef;
+    let localUser = this.usersService.getUser(id);
 
     if (!localUser)
       console.error('The user with ID=%o was not found', id);
     else
       console.log("getting local user...\n\n\tid: %o\n\tuser: %o\n\nrequest finished!", id, localUser);
+  }
+
+  private addCurrentUserToLocal() {
+    if (this.isUsersValid(this.usersForm.value)) {
+      this.usersService.insertUser(this.usersForm.value);
+      return true;
+    }
+
+    console.error('current user is not valid: %o', this.usersForm);
+    return false;
+  }
+
+  private resetForm() {
+    this.initForm();
+  }
+
+  /* Double check validation */
+  private isUsersValid(user: object) {
+    console.log(this.usersForm);
+    return this.usersForm.valid;
   }
   
   

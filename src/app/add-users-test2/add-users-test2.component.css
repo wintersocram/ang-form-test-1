@@ -1,0 +1,8 @@
+.list-group-item {
+    border: none;
+}
+#idRef {
+    width: 50px;
+    margin-right: 10px;
+    text-align: center;
+}

@@ -143,8 +143,16 @@
     </div>
 </form>
 
-
-<button class="btn btn-default" (click)="getLocalSampleData()">local sample data</button>
-<button class="btn btn-default" (click)="getLocalUsers()">local users</button>
-<button class="btn btn-default" (click)="getLocalUserById(2)">local user</button>
+<ul class="list-group">
+    <li class="list-group-item">
+        <button class="btn btn-default" (click)="getLocalUsers()">get local users</button>
+    </li>
+    <li class="list-group-item">
+        <input id="idRef" [(ngModel)]="idRef" type="text"/>
+        <button class="btn btn-default" (click)="getLocalUserById()">get user id={{ idRef }}</button>
+    </li>
+    <li class="list-group-item">
+        <button class="btn btn-primary" (click)="addLocal()">add new and not submit</button>
+    </li>
+</ul>
 
