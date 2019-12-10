@@ -1,6 +1,13 @@
 {
-  "name": "form-test1",
+  "name": "form-model-angular",
   "version": "0.0.0",
+  "description": "Form model in Angular 8 with full badge : testing, api connection, errors handling, bootstrap, validations, route, menu, progress bar, etc.",
+  "author": "Valois, M (wintersocram)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wintersocram/form-model-angular.git"
+  },
+  "keywords": ["angular","rxjs","form model","form"],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
