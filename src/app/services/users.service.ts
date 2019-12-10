@@ -58,16 +58,18 @@ export class UsersService {
 
   insertUser(user: object) {
     if (Object.keys(user).length > 0) {
+      let newUser: object = Object.assign({}, user);
+
       // define id
       let id: number = 0;
       for (let i=0 ; i< this.users.length ; i++) {
         id = this.users[i].id > id ? this.users[i].id : id;
       }
       // update user id
-      user['id'] = id + 1;
+      newUser['id'] = id + 1;
 
       // insert user
-      this._users.push(user);
+      this._users.push(newUser);
     }
     else
       console.warn('user is empty: %o', user);

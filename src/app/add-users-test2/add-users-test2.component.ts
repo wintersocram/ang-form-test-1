@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AddUsersValidator } from '../common/add-users-validation';
 import { UsersService } from '../services/users.service';
-import * as localData from '../local-data/data.json';
-import * as localUsers from '../local-data/users.json';
 
 @Component({
   selector: 'add-users-test2',
@@ -11,16 +9,12 @@ import * as localUsers from '../local-data/users.json';
   styleUrls: ['./add-users-test2.component.css']
 })
 export class AddUsersTest2Component implements OnInit {
-  usersForm: FormGroup;
-  localUsers: any;
-  localSampleData: any;
+  private usersForm: FormGroup;
   idRef: number = 0;
-  // private _noPassword: boolean = false;
 
   constructor(private usersService: UsersService) {}
 
   ngOnInit() {
-    // this.usersService.getUser();
     this.initForm();
   }
 
@@ -111,7 +105,6 @@ export class AddUsersTest2Component implements OnInit {
 
   /* Double check validation */
   private isUsersValid(user: object) {
-    console.log(this.usersForm);
     return this.usersForm.valid;
   }
   
