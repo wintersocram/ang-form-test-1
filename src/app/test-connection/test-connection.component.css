@@ -1,0 +1,27 @@
+.test-connection-panel .method-container {
+    width: 8%;
+}
+.test-connection-panel .url-container {
+    width: 20%;
+}
+.test-connection-panel .data-container {
+    width: 20%;
+}
+.test-connection-panel .result-container {
+    width: 40%;
+}
+.test-connection-panel .method,
+.test-connection-panel .url,
+.test-connection-panel .data {
+    width: 100%;
+}
+
+.test-connection-panel .btn-reset {
+    margin-right: 20px;
+}
+.test-connection-panel .label-base-url {
+    margin-right: 5px;
+}
+.test-connection-panel .input-base-url {
+    width: 50%;
+}

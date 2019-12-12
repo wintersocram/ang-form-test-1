@@ -1,0 +1,96 @@
+<div class="panel panel-default test-connection-panel">
+    <div class="panel-heading">Testing connection</div>
+    <div class="panel-body">
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">METHOD</th>
+                <th scope="col">URL</th>
+                <th scope="col">DATA</th>
+                <th scope="col">TEST</th>
+                <th scope="col">RESULT</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">GET</th>
+                <td class="url-container">
+                    <input [(ngModel)]="getBaseUrl" class="url" type="text"/>
+                </td>
+                <td>N/A</td>
+                <td>
+                    <button 
+                        (click)="testGet()" 
+                        type="button" 
+                        class="btn btn-primary"
+                    >RUN</button>
+                </td>
+                <td 
+                    class="result-container" 
+                    [ngClass]="{
+                        'alert alert-success': getResultStatus == 'success',
+                        'alert alert-danger': getResultStatus == 'error'
+                    }"
+                >{{ getResult | json }}</td>
+            </tr>
+            <tr>
+                <th scope="row">POST</th>
+                <td class="url-container">
+                    <input [(ngModel)]="postBaseUrl" class="url" type="text"/>
+                </td>
+                <td class="data-container">
+                    <input [(ngModel)]="postData" class="data" type="text"/>
+                </td>
+                <td>
+                    <button 
+                        (click)="testPost()" 
+                        type="button" 
+                        class="btn btn-primary"
+                    >RUN</button>
+                </td>
+                <td 
+                    class="result-container" 
+                    [ngClass]="{
+                        'alert alert-success': postResultStatus == 'success',
+                        'alert alert-danger': postResultStatus == 'error'
+                    }"
+                >{{ postResult | json }}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="method-container">
+                    <input [(ngModel)]="customMethod" class="method" type="text"/>
+                </th>
+                <td class="url-container">
+                    <input [(ngModel)]="customBaseUrl" class="url" type="text"/>
+                </td>
+                <td class="data-container">
+                    <input [(ngModel)]="customData" class="data" type="text"/>
+                </td>
+                <td>
+                    <button 
+                        (click)="testCustom()" 
+                        type="button" 
+                        class="btn btn-secondary"
+                    >RUN</button>
+                </td>
+                <td 
+                    class="result-container" 
+                    [ngClass]="{
+                        'alert alert-success': customResultStatus == 'success',
+                        'alert alert-danger': customResultStatus == 'error'
+                    }"
+                >{{ customResult | json }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-body">
+        <button 
+            (click)="reset()" 
+            type="button" 
+            class="btn btn-danger btn-reset"
+        >RESET</button>
+        <label class="label-base-url">base URL: </label>
+        <input [(ngModel)]="baseUrl" class="input-base-url" type="text"/>
+    </div>
+</div>

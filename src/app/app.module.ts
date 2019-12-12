@@ -7,11 +7,13 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './services/data.service';
 import { UsersService } from './services/users.service';
+import { TestConnectionComponent } from './test-connection/test-connection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddUserComponent
+    AddUserComponent,
+    TestConnectionComponent
   ],
   imports: [
     BrowserModule,
