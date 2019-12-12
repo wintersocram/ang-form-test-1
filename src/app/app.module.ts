@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { AddUsersTest2Component } from './add-users-test2/add-users-test2.component';
+import { AddUserComponent } from './add-user/add-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './services/data.service';
 import { UsersService } from './services/users.service';
@@ -11,7 +11,7 @@ import { UsersService } from './services/users.service';
 @NgModule({
   declarations: [
     AppComponent,
-    AddUsersTest2Component
+    AddUserComponent
   ],
   imports: [
     BrowserModule,

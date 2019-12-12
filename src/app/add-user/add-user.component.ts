@@ -4,11 +4,11 @@ import { AddUsersValidator } from '../common/add-users-validation';
 import { UsersService } from '../services/users.service';
 
 @Component({
-  selector: 'add-users-test2',
-  templateUrl: './add-users-test2.component.html',
-  styleUrls: ['./add-users-test2.component.css']
+  selector: 'add-user',
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.css']
 })
-export class AddUsersTest2Component implements OnInit {
+export class AddUserComponent implements OnInit {
   private usersForm: FormGroup;
   idRef: number = 0;
 
